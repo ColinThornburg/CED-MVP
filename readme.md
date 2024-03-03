@@ -18,9 +18,10 @@ The project employs the LangChain library, integrating various tools and agents 
 4. Input queries to receive AI-generated responses based on the uploaded documents.
 
 ## Installation
-pip install -r requirements.txt
-need to export openai api key as environment variable
-streamlit run app.py
+#### Add manual pdf docs (see basecamp chat)
+#### pip install -r requirements.txt
+#### need to export openai api key as environment variable
+#### streamlit run app.py
 
 ## Contribution
 TODO: Guidelines for contributing to the project, including coding standards, pull request process, etc.
