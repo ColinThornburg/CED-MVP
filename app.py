@@ -22,11 +22,11 @@ st.title('CED Development for Southeastern Indiana Regional Planning Commission'
 ### models: https://platform.openai.com/docs/models/gpt-3-5-turbo
 llm = ChatOpenAI(model="gpt-3.5-turbo-0125", temperature=0)  # Ensure this model supports OpenAI Tools
 
-# Define the files to load
+# Files for the RAG and Agent
 files = [
     {
         "name": "SIDC",
-        "path": "multi_pdf/CED-SIDC.pdf",
+        "path": "CED-SIDC.pdf",
     },
     {
         "name": "SIRPC",
@@ -49,7 +49,7 @@ for file in files:
     embeddings = OpenAIEmbeddings()
     retriever = FAISS.from_documents(docs, embeddings).as_retriever()
 
-    # Create a Custom Document Retrieval Tool for each file
+    # Document Retrieval Mechanism --> No F'ing clue what this is but I think there is a more updated way to do this
     tools.append(
     Tool(
         args_schema=DocumentInput,
@@ -60,7 +60,7 @@ for file in files:
 )
 
 # Get the prompt for the OpenAI Tools agent
-### https://smith.langchain.com/hub/hwchase17/openai-tools-agent --> I don't have a deep understanding of this
+### https://smith.langchain.com/hub/hwchase17/openai-tools-agent --> I don't have a deep understanding of this either but there are template prompts
 prompt = hub.pull("hwchase17/openai-tools-agent")
 
 # Construct the OpenAI Tools agent
